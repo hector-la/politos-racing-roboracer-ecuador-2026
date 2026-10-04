@@ -73,17 +73,25 @@ flowchart LR
 
 ![Mapa limpio](media/figuras/mapa_limpio.png)
 
-**Trayectoria y perfil de velocidad**
+**Trayectoria planificada**
 
-![Raceline y perfil de velocidad](media/figuras/raceline_y_perfil_de_velocidad.png)
+![Trayectoria planificada](media/figuras/raceline_mapa.png)
 
-**Comparación de márgenes**
+**Perfil de velocidad**
 
-![Comparación m15 vs m20](media/figuras/comparacion_m15_vs_m20.png)
+![Perfil de velocidad](media/figuras/perfil_velocidad.png)
+
+**Margen de seguridad: m15 vs m20**
+
+![Márgenes sobre el mapa](media/figuras/comparacion_margenes_mapa.png)
+
+![Márgenes, perfil de velocidad](media/figuras/comparacion_margenes_perfil.png)
 
 **Recorrido real vs trayectoria planificada**
 
-![Recorrido vs plan](media/figuras/recorrido_vs_plan.png)
+![Recorrido real vs plan](media/figuras/recorrido_vs_plan_mapa.png)
+
+![Velocidad planificada vs medida](media/figuras/velocidad_plan_vs_medida.png)
 
 ---
 
@@ -93,9 +101,11 @@ flowchart LR
 |---|---|---|
 | Mapa SLAM | Mapa de la pista tal como lo genera SLAM Toolbox. | Contiene ruido fuera de la pista y paredes con huecos. |
 | Mapa limpio | El mismo mapa después de limpiarlo a mano. | Solo queda la pista y las islas de mangas: es el mapa que usan la localización y la planificación. |
-| Trayectoria y perfil de velocidad | La línea de mínima curvatura sobre el mapa, coloreada por velocidad, y su perfil a lo largo de la vuelta. | Rectas rápidas, frenada antes de cada curva y la curva más cerrada como punto más lento. |
-| Comparación de márgenes | Dos trayectorias con distinta distancia de seguridad a la pared (m15 y m20). | Un margen mayor deja más holgura a cambio de un poco de velocidad en curva. La m20 fue la usada en la competencia. |
-| Recorrido real vs plan | El recorrido estimado por el filtro de partículas en 11 vueltas de pruebas, junto a la trayectoria planificada, y la velocidad medida frente a la planificada. | El coche sigue la forma de la trayectoria y reproduce su perfil de velocidad, con una velocidad real ligeramente menor. |
+| Trayectoria planificada | La línea de mínima curvatura sobre el mapa, coloreada por velocidad, junto a la línea central. | Los puntos más lentos están en las curvas cerradas y los más rápidos en las rectas. |
+| Perfil de velocidad | La velocidad planificada a lo largo de una vuelta. | Rectas rápidas, frenada antes de cada curva y la curva más cerrada como punto más lento. |
+| Margen de seguridad (mapa y perfil) | Dos trayectorias con distinta distancia de seguridad a la pared: m15 y m20. | Un margen mayor deja más holgura a la pared, y el perfil permite más velocidad en recta. La m20 fue la usada en la competencia. |
+| Recorrido real vs plan (mapa) | El recorrido estimado por el filtro de partículas en 11 vueltas de pruebas, sobre la trayectoria planificada. | El coche sigue la forma de la trayectoria, con desvíos de decenas de centímetros. |
+| Velocidad planificada vs medida | La velocidad prevista contra la que midió el coche, promediada en esas vueltas. | El coche reproduce el perfil, con una velocidad real ligeramente menor. |
 
 *Las figuras de trayectoria y velocidad corresponden a la planificación y a una sesión de pruebas, no a las vueltas de la competencia.*
 
