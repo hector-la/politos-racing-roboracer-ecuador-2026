@@ -176,4 +176,4 @@ Seguimos preparándonos para competencias internacionales.
 Equipo: Héctor La Mota, Anthony Guadalupe, Raúl Villavicencio,
 Micaela Carolina Anamise Llumiquinga y Marcos Emmanuel Balón.
 
-Coach: Winter Delgado.
+Coach: Winter Delgado ([@widegonz](https://github.com/widegonz)).
