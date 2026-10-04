@@ -32,7 +32,7 @@ simulador y después en el coche real.
 
 ![Vueltas del Time Trial](media/gifs/vueltas.gif)
 
-**Videos:** [10 vueltas (Time Trial)](media/videos/10_vueltas_time_trial.mp4) · [Prueba de velocidad a 4.5 m/s](media/videos/prueba_4_5_ms.mp4)
+**Videos:** [10 vueltas (Time Trial)](media/videos/10_vueltas_time_trial.mp4) · [Prueba de velocidad a 4.5 m/s](media/videos/prueba_4_5_ms.mp4) · [RViz (pruebas)](media/videos/rviz_recorrido.mp4)
 
 ---
 
@@ -106,6 +106,12 @@ Cada etapa se validó primero en el simulador F1TENTH y después en el coche rea
 ![Márgenes sobre el mapa](media/figuras/comparacion_margenes_mapa.png)
 
 ![Márgenes, perfil de velocidad](media/figuras/comparacion_margenes_perfil.png)
+
+**Visualización en RViz**
+
+Reproducción de una sesión de pruebas: trayectoria planificada (verde), recorrido del coche (naranja) y posición actual (flecha azul).
+
+![RViz](media/gifs/rviz.gif)
 
 **Recorrido real vs trayectoria planificada**
 
