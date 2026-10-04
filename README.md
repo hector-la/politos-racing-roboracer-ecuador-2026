@@ -7,35 +7,54 @@
 
 ---
 
+## Resumen
+
+Este proyecto documenta el desarrollo de un coche autónomo a escala 1:10 que compitió en
+dos categorías: contrarreloj (*Time Trial*) y carreras contra otro coche (*Head to Head Race*).
+Se construyó la cadena completa de conducción autónoma, validando cada etapa primero en
+simulador y después en el coche real.
+
+---
+
 ## Resultados
 
-- **Time Trial:** 10 vueltas sin ninguna colisión en cada uno de los 3 intentos.
-- **Vuelta más rápida:** 10.23 s (tiempo del equipo).
-- **Head to Head Race:** el algoritmo adelanta solo cuando existe una ventana segura.
-- **Con un LiDAR de 10 Hz:** 10 lecturas por segundo, a velocidades de hasta ~4.4 m/s en recta.
-
-| | |
+| Categoría | Resultado |
 |---|---|
-| ![Coche](media/fotos/02_coche_con_medallas.jpeg) | ![Piloto](media/fotos/03_con_el_coche.jpeg) |
+| Time Trial | 10 vueltas sin ninguna colisión en cada uno de los 3 intentos |
+| Vuelta más rápida | 10.23 s (tiempo del equipo) |
+| Head to Head Race | Adelantamiento solo cuando existe una ventana segura |
+| Clasificación general | **Primer lugar** |
+| Velocidad en recta | Hasta ~4.4 m/s con un LiDAR de 10 Hz |
+
+![Coche con las medallas](media/fotos/02_coche_con_medallas.jpeg)
 
 **Videos:** [10 vueltas (Time Trial)](media/videos/10_vueltas_time_trial.mp4) · [Prueba de velocidad](media/videos/prueba_de_velocidad.mp4)
 
 ---
 
-## La plataforma
+## Plataforma
 
-Coche autónomo a escala 1:10 tipo [F1TENTH](https://f1tenth.org) / [RoboRacer](https://roboracer.ai):
-
-- Jetson Orin Nano
-- LiDAR RPLIDAR S2
-- Controlador de motor VESC
-- ROS 2 Humble, con el simulador F1TENTH para validar antes de ir al coche real
+| Componente | Detalle |
+|---|---|
+| Coche | Plataforma [F1TENTH](https://f1tenth.org) / [RoboRacer](https://roboracer.ai), escala 1:10 |
+| Computador | Jetson Orin Nano |
+| Sensor | LiDAR RPLIDAR S2 (10 Hz) |
+| Motor | Controlador VESC |
+| Software | ROS 2 Humble y el simulador F1TENTH |
 
 ---
 
-## La cadena de conducción autónoma
+## Metodología
 
-![Cadena](media/figuras/00_cadena_autonoma.png)
+```mermaid
+flowchart LR
+  S["Sensores<br/>LiDAR · VESC · giroscopio"] --> M["Mapeo<br/>SLAM Toolbox"]
+  S --> L["Localización<br/>filtro de partículas"]
+  M --> P["Planificación<br/>mínima curvatura + velocidad"]
+  L --> C["Control<br/>Pure Pursuit"]
+  P --> C
+  C --> V["Coche 1:10"]
+```
 
 1. **Mapeo:** SLAM Toolbox, y limpieza manual del mapa.
 2. **Planificación:** trayectoria de mínima curvatura con perfil de velocidad.
@@ -46,10 +65,47 @@ Coche autónomo a escala 1:10 tipo [F1TENTH](https://f1tenth.org) / [RoboRacer](
 
 ## Del mapa a la trayectoria
 
-![Mapa](media/figuras/04_mapa_crudo_vs_limpio.png)
-![Trayectoria](media/figuras/05_raceline_y_perfil_de_velocidad.png)
-![Márgenes](media/figuras/06_comparacion_m15_vs_m20.png)
-![Recorrido](media/figuras/07_recorrido_vs_plan.png)
+**Mapa SLAM**
+
+![Mapa SLAM](media/figuras/mapa_slam.png)
+
+**Mapa limpio**
+
+![Mapa limpio](media/figuras/mapa_limpio.png)
+
+**Trayectoria y perfil de velocidad**
+
+![Raceline y perfil de velocidad](media/figuras/raceline_y_perfil_de_velocidad.png)
+
+**Comparación de márgenes**
+
+![Comparación m15 vs m20](media/figuras/comparacion_m15_vs_m20.png)
+
+**Recorrido real vs trayectoria planificada**
+
+![Recorrido vs plan](media/figuras/recorrido_vs_plan.png)
+
+---
+
+## ¿Qué muestra cada figura?
+
+| Figura | Qué es | Qué se observa |
+|---|---|---|
+| Mapa SLAM | Mapa de la pista tal como lo genera SLAM Toolbox. | Contiene ruido fuera de la pista y paredes con huecos. |
+| Mapa limpio | El mismo mapa después de limpiarlo a mano. | Solo queda la pista y las islas de mangas: es el mapa que usan la localización y la planificación. |
+| Trayectoria y perfil de velocidad | La línea de mínima curvatura sobre el mapa, coloreada por velocidad, y su perfil a lo largo de la vuelta. | Rectas rápidas, frenada antes de cada curva y la curva más cerrada como punto más lento. |
+| Comparación de márgenes | Dos trayectorias con distinta distancia de seguridad a la pared (m15 y m20). | Un margen mayor deja más holgura a cambio de un poco de velocidad en curva. La m20 fue la usada en la competencia. |
+| Recorrido real vs plan | El recorrido estimado por el filtro de partículas en 11 vueltas de pruebas, junto a la trayectoria planificada, y la velocidad medida frente a la planificada. | El coche sigue la forma de la trayectoria y reproduce su perfil de velocidad, con una velocidad real ligeramente menor. |
+
+*Las figuras de trayectoria y velocidad corresponden a la planificación y a una sesión de pruebas, no a las vueltas de la competencia.*
+
+---
+
+## Retos
+
+- **Un LiDAR de 10 Hz:** a ~4 m/s el coche avanza unos 40 cm entre una lectura y la siguiente.
+- **Piso liso:** el agarre limita la velocidad en curva.
+- **Tiempo:** pasar de cero a una cadena completa en pocos meses.
 
 ---
 
@@ -57,8 +113,29 @@ Coche autónomo a escala 1:10 tipo [F1TENTH](https://f1tenth.org) / [RoboRacer](
 
 - Medir el coche real en lugar de suponer sus parámetros.
 - Validar cada etapa en el simulador antes de llevarla al coche.
-- Guardar los datos de cada prueba para poder analizarlos después.
+- Guardar los datos de cada prueba para analizarlos después.
 - Un LiDAR lento se compensa con buena odometría y buena localización.
+
+---
+
+## Cronología
+
+| Fase | Qué se hizo |
+|---|---|
+| 1 | Aprendizaje de ROS 2 y trabajo en el simulador F1TENTH |
+| 2 | Paso al coche real: control manual, mapeo y localización |
+| 3 | Planificación de trayectorias y control autónomo |
+| 4 | Ajuste de velocidad y competencia (1 de octubre de 2026) |
+
+---
+
+## Glosario breve
+
+- **SLAM:** construir un mapa mientras se localiza el coche.
+- **Filtro de partículas:** estima dónde está el coche comparando el LiDAR con el mapa.
+- **Trayectoria de mínima curvatura:** la línea que evita curvas cerradas para poder ir más rápido.
+- **Pure Pursuit:** controlador que persigue un punto de la trayectoria por delante del coche.
+- **Odometría:** estimación del movimiento a partir de la velocidad y el giro.
 
 ---
 
@@ -75,6 +152,12 @@ Un orden para aprender, de lo más básico a lo más completo:
 7. **Carreras head-to-head:** seguir y adelantar con seguridad.
 
 Se aprende paso a paso.
+
+---
+
+## Próximos pasos
+
+Seguimos preparándonos para competencias internacionales.
 
 ---
 
