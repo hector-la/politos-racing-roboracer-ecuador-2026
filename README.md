@@ -22,7 +22,7 @@ pipeline, validating each stage first in simulation and then on the real car.
 | Category | Result |
 |---|---|
 | Time Trial | 10 laps without any collision in each of the 3 attempts |
-| Fastest lap | 10.23 s (timed by the team) |
+| Fastest lap | 10.50 s (timed by the team) |
 | Head to Head Race | Overtakes only when a safe window exists |
 | Overall | **First place** |
 | Straight-line speed | Up to ~4.4 m/s with a 10 Hz LiDAR |
@@ -197,7 +197,7 @@ We keep preparing for international competitions.
 
 ## Credits
 
-Team: Héctor La Mota, Anthony Guadalupe, Raúl Villavicencio,
-Micaela Carolina Anamise Llumiquinga and Marcos Emmanuel Balón.
+Team: Héctor La Mota, Carolina Sánchez, Micaela Anamise, Anthony Guadalupe, Raúl Villavicencio and Marcos Balón
+
 
 Coach: Winter Delgado ([@widegonz](https://github.com/widegonz)).
