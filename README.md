@@ -32,7 +32,7 @@ simulador y después en el coche real.
 
 ![Vueltas del Time Trial](media/gifs/vueltas.gif)
 
-**Videos:** [10 vueltas (Time Trial)](media/videos/10_vueltas_time_trial.mp4) · [Prueba de velocidad](media/videos/prueba_de_velocidad.mp4)
+**Videos:** [10 vueltas (Time Trial)](media/videos/10_vueltas_time_trial.mp4) · [Prueba de velocidad a 4.5 m/s](media/videos/prueba_4_5_ms.mp4)
 
 ---
 
