@@ -83,6 +83,6 @@ Se aprende paso a paso.
 Equipo: Héctor La Mota, Anthony Guadalupe, Raúl Villavicencio,
 Micaela Carolina Anamise Llumiquinga y Marcos Emmanuel Balón.
 
-Gracias al Club AIROS y a la ESPOL, a Winter por sus consejos, y a la Universidad Católica
+Gracias al Club AIROS y a la ESPOL, a Winter Delgado por sus consejos, y a la Universidad Católica
 de Santiago de Guayaquil y al Ph.D. Nabih Pico por organizar este tipo de competencias de
 robótica autónoma en Ecuador.
