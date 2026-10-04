@@ -5,7 +5,7 @@
 
 ![Equipo](media/fotos/01_equipo.jpeg)
 
-**Contenido:** [Resumen](#resumen) · [Resultados](#resultados) · [Plataforma](#plataforma) · [Metodología](#metodología) · [Del simulador al coche](#del-simulador-al-coche) · [Del mapa a la trayectoria](#del-mapa-a-la-trayectoria) · [Figuras](#qué-muestra-cada-figura) · [Evolución](#evolución-del-proyecto) · [Límites](#límites-actuales) · [Si estás empezando](#si-estás-empezando) · [Créditos](#créditos)
+**Contenido:** [Resumen](#resumen) · [Resultados](#resultados) · [Plataforma](#plataforma) · [Metodología](#metodología) · [Del simulador al coche](#del-simulador-al-coche) · [Del mapa a la trayectoria](#del-mapa-a-la-trayectoria) · [Figuras](#qué-muestra-cada-figura) · [Evolución](#evolución-del-proyecto) · [Retos](#retos) · [Si estás empezando](#si-estás-empezando) · [Créditos](#créditos)
 
 ---
 
@@ -27,8 +27,6 @@ simulador y después en el coche real.
 | Head to Head Race | Adelantamiento solo cuando existe una ventana segura |
 | Clasificación general | **Primer lugar** |
 | Velocidad en recta | Hasta ~4.4 m/s con un LiDAR de 10 Hz |
-
-![Coche con las medallas](media/fotos/02_coche_con_medallas.jpeg)
 
 ![Vueltas del Time Trial](media/gifs/vueltas.gif)
 
@@ -139,9 +137,8 @@ Reproducción de una sesión de pruebas: trayectoria planificada (verde), recorr
 
 ## Retos
 
-- **Un LiDAR de 10 Hz:** a ~4 m/s el coche avanza unos 40 cm entre una lectura y la siguiente.
-- **Piso liso:** el agarre limita la velocidad en curva.
-- **Tiempo:** pasar de cero a una cadena completa en pocos meses.
+- **LiDAR de 10 Hz:** a ~4 m/s el coche avanza unos 40 cm entre una lectura y la siguiente, lo que limita la velocidad a la que se puede localizar con precisión.
+- **Piso de esta competencia:** al ser liso, el agarre limitó la velocidad en curva; en pruebas a más de ~4 m/s el coche perdía tracción.
 
 ---
 
@@ -164,14 +161,6 @@ Reproducción de una sesión de pruebas: trayectoria planificada (verde), recorr
 | Odometría con giroscopio | Mejor orientación del coche, y más velocidad con seguridad |
 | Medición del coche real | Parámetros reales en lugar de supuestos; vueltas de ~12.2 s en pruebas |
 | Competencia (1 de octubre de 2026) | Vuelta más rápida de **10.23 s** |
-
----
-
-## Límites actuales
-
-- LiDAR de 10 Hz: limita la velocidad a la que se puede localizar el coche con precisión.
-- Agarre del piso: a velocidades mayores de ~4 m/s el coche empieza a perder tracción en curva.
-- Estos dos puntos marcan por dónde seguir mejorando.
 
 ---
 
