@@ -5,6 +5,8 @@
 
 ![Equipo](media/fotos/01_equipo.jpeg)
 
+**Contenido:** [Resumen](#resumen) · [Resultados](#resultados) · [Plataforma](#plataforma) · [Metodología](#metodología) · [Del simulador al coche](#del-simulador-al-coche) · [Del mapa a la trayectoria](#del-mapa-a-la-trayectoria) · [Figuras](#qué-muestra-cada-figura) · [Evolución](#evolución-del-proyecto) · [Límites](#límites-actuales) · [Si estás empezando](#si-estás-empezando) · [Créditos](#créditos)
+
 ---
 
 ## Resumen
@@ -28,6 +30,8 @@ simulador y después en el coche real.
 
 ![Coche con las medallas](media/fotos/02_coche_con_medallas.jpeg)
 
+![Vueltas del Time Trial](media/gifs/vueltas.gif)
+
 **Videos:** [10 vueltas (Time Trial)](media/videos/10_vueltas_time_trial.mp4) · [Prueba de velocidad](media/videos/prueba_de_velocidad.mp4)
 
 ---
@@ -41,6 +45,8 @@ simulador y después en el coche real.
 | Sensor | LiDAR RPLIDAR S2 (10 Hz) |
 | Motor | Controlador VESC |
 | Software | ROS 2 Humble y el simulador F1TENTH |
+
+![Componentes del coche](media/fotos/coche_componentes.png)
 
 ---
 
@@ -60,6 +66,20 @@ flowchart LR
 2. **Planificación:** trayectoria de mínima curvatura con perfil de velocidad.
 3. **Localización:** filtro de partículas con odometría apoyada en giroscopio.
 4. **Control:** Pure Pursuit.
+
+---
+
+## Del simulador al coche
+
+Cada etapa se validó primero en el simulador F1TENTH y después en el coche real.
+
+| Etapa | En el simulador | En el coche real |
+|---|---|---|
+| Mapeo | Mapa de una pista de simulación | Mapa de la pista oficial |
+| Localización | Filtro de partículas validado | Usado en la competencia |
+| Planificación | Trayectoria de mínima curvatura validada | Trayectoria de la pista oficial |
+| Control | Pure Pursuit validado | Usado en la competencia |
+| Head to Head | Adelantamientos sin contacto, con percepción ideal | Usado en la competencia |
 
 ---
 
@@ -128,14 +148,24 @@ flowchart LR
 
 ---
 
-## Cronología
+## Evolución del proyecto
 
-| Fase | Qué se hizo |
+| Hito | Resultado |
 |---|---|
-| 1 | Aprendizaje de ROS 2 y trabajo en el simulador F1TENTH |
-| 2 | Paso al coche real: control manual, mapeo y localización |
-| 3 | Planificación de trayectorias y control autónomo |
-| 4 | Ajuste de velocidad y competencia (1 de octubre de 2026) |
+| Simulador F1TENTH | Cadena completa validada antes de tocar el coche |
+| Primera corrida autónoma en el coche real | Control y localización funcionando a baja velocidad |
+| Pista oficial | Mapa propio, trayectoria y primeras vueltas |
+| Odometría con giroscopio | Mejor orientación del coche, y más velocidad con seguridad |
+| Medición del coche real | Parámetros reales en lugar de supuestos; vueltas de ~12.2 s en pruebas |
+| Competencia (1 de octubre de 2026) | Vuelta más rápida de **10.23 s** |
+
+---
+
+## Límites actuales
+
+- LiDAR de 10 Hz: limita la velocidad a la que se puede localizar el coche con precisión.
+- Agarre del piso: a velocidades mayores de ~4 m/s el coche empieza a perder tracción en curva.
+- Estos dos puntos marcan por dónde seguir mejorando.
 
 ---
 
