@@ -18,7 +18,7 @@
 |---|---|
 | ![Coche](media/fotos/02_coche_con_medallas.jpeg) | ![Piloto](media/fotos/03_con_el_coche.jpeg) |
 
-**Videos:** [10 vueltas (Time Trial)](media/videos/10_vueltas_time_trial.mp4) · [Rectas a alta velocidad](media/videos/rectas_4_5_ms.mp4)
+**Videos:** [10 vueltas (Time Trial)](media/videos/10_vueltas_time_trial.mp4) · [Prueba de velocidad](media/videos/prueba_de_velocidad.mp4)
 
 ---
 
